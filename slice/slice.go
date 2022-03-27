@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package slice
 
 func Filter[T any](list []T, f func(T) bool) ([]T, error) {
 	var result []T
@@ -10,13 +8,4 @@ func Filter[T any](list []T, f func(T) bool) ([]T, error) {
 		}
 	}
 	return result, nil
-}
-
-func isPositive(i int) bool {
-	return i > 0
-}
-
-func main() {
-	l := []int{-1, 4, 0, -5, 2, 3}
-	fmt.Println(Filter(l, isPositive))
 }
