@@ -2,6 +2,7 @@ package slice
 
 import (
 	"reflect"
+	"strconv"
 	"testing"
 )
 
@@ -32,5 +33,17 @@ func TestMapEmpty(t *testing.T) {
 	}
 	if len(res) != 0 {
 		t.Errorf("Expected empty slice, got %v", res)
+	}
+}
+
+func TestMapToString(t *testing.T) {
+	l := []int{-1, 4, 0, -5, 2, 3}
+	res, err := Map(l, func(i int) (string, error) { return strconv.Itoa(i), nil })
+	exp := []string{"-1", "4", "0", "-5", "2", "3"}
+	if err != nil {
+		t.Error(err)
+	}
+	if !reflect.DeepEqual(res, exp) {
+		t.Errorf("Expected %v, got %v", exp, res)
 	}
 }
