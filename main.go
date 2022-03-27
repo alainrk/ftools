@@ -2,10 +2,7 @@ package main
 
 import "fmt"
 
-// type Predicate[T any] func(T) bool
-type Predicate[T any] func(T) bool
-
-func Filter[T any](list []T, f Predicate) ([]T, error) {
+func Filter[T any](list []T, f func(T) bool) ([]T, error) {
 	var result []T
 	for _, v := range list {
 		if f(v) {
