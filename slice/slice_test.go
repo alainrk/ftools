@@ -53,3 +53,14 @@ func TestString(t *testing.T) {
 		t.Errorf("Expected %v, got %v", exp, res)
 	}
 }
+
+func TestEmpty(t *testing.T) {
+	l := []string{"hello world", "asd", "This is it", "WHeRE IS IT"}
+	res, err := Filter(l, isUppercase)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(res) != 0 {
+		t.Errorf("Expected empty result, got %v", res)
+	}
+}
