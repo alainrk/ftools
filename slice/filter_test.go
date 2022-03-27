@@ -6,19 +6,19 @@ import (
 	"testing"
 )
 
-func isPositive(i int) bool {
-	return i >= 0
+func isPositive(i int) (bool, error) {
+	return i >= 0, nil
 }
 
-func isNegative(i float64) bool {
-	return i < 0
+func isNegative(i float64) (bool, error) {
+	return i < 0, nil
 }
 
-func isUppercase(s string) bool {
-	return s == strings.ToUpper(s)
+func isUppercase(s string) (bool, error) {
+	return s == strings.ToUpper(s), nil
 }
 
-func TestInt(t *testing.T) {
+func TestFilterInt(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
 	res, err := Filter(l, isPositive)
 	exp := []int{4, 0, 2, 3}
@@ -30,7 +30,7 @@ func TestInt(t *testing.T) {
 	}
 }
 
-func TestFloat(t *testing.T) {
+func TestFilterFloat(t *testing.T) {
 	l := []float64{-1.5, 4.3, 0, -5.7842, 2.012938, 3.0}
 	res, err := Filter(l, isNegative)
 	exp := []float64{-1.5, -5.7842}
@@ -42,7 +42,7 @@ func TestFloat(t *testing.T) {
 	}
 }
 
-func TestString(t *testing.T) {
+func TestFilterString(t *testing.T) {
 	l := []string{"hello world", "HI", "This is it", "WHERE IS IT"}
 	res, err := Filter(l, isUppercase)
 	exp := []string{"HI", "WHERE IS IT"}
@@ -54,7 +54,7 @@ func TestString(t *testing.T) {
 	}
 }
 
-func TestEmpty(t *testing.T) {
+func TestFilterEmpty(t *testing.T) {
 	l := []string{"hello world", "asd", "This is it", "WHeRE IS IT"}
 	res, err := Filter(l, isUppercase)
 	if err != nil {
