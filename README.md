@@ -9,29 +9,29 @@ Requires `go >= 1.18`
 
 ## Example
 ```go
-	ints := []int{1, 2, 3, 4, 5}
-	chars := []string{"a", "b", "c", "d", "e"}
-	products := []product{
-		product{Name: "a", Price: 10},
-		product{Name: "b", Price: 20},
-		product{Name: "c", Price: 30},
-	}
+ints := []int{1, 2, 3, 4, 5}
+chars := []string{"a", "b", "c", "d", "e"}
+products := []product{
+  product{Name: "a", Price: 10},
+  product{Name: "b", Price: 20},
+  product{Name: "c", Price: 30},
+}
 
-	// Filter
-	even, _ := slice.Filter(ints, func(x int) (bool, error) {
-		return x%2 == 0, nil
-	})
-	fmt.Println(even) // [2 4]
+// Filter
+even, _ := slice.Filter(ints, func(x int) (bool, error) {
+  return x%2 == 0, nil
+})
+fmt.Println(even) // [2 4]
 
-	// Map
-	upper, _ := slice.Map(chars, func(x string) (string, error) {
-		return strings.ToUpper(x), nil
-	})
-	fmt.Println(upper) // [A B C D E]
+// Map
+upper, _ := slice.Map(chars, func(x string) (string, error) {
+  return strings.ToUpper(x), nil
+})
+fmt.Println(upper) // [A B C D E]
 
-	// Reduce
-	sumPrice, _ := slice.Reduce(products, func(s float64, p product) (float64, error) {
-		return s + p.Price, nil
-	}, 0)
-	fmt.Println(sumPrice) // 60
+// Reduce
+sumPrice, _ := slice.Reduce(products, func(s float64, p product) (float64, error) {
+  return s + p.Price, nil
+}, 0)
+fmt.Println(sumPrice) // 60
 ```
