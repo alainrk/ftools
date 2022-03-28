@@ -64,3 +64,50 @@ allNegatives, _ := slice.Every(floats, isNegative)
 fmt.Println(hasNegatives) // true
 fmt.Println(allNegatives) // false
 ```
+
+## Example
+```go
+logs := []log{
+  {1, "1648449331 Proc started", "INFO"},
+  {2, "1648449331 Proc started", "INFO"},
+  {2, "1648449331 Missing log folder", "WARNING"},
+  {3, "1648449331 Proc started", "INFO"},
+  {1, "1648449331 Missing log folder", "WARNING"},
+  {3, "1648449331 Missing log folder", "WARNING"},
+  {1, "1648449331 Creating log folder", "DEBUG"},
+  {2, "1648449331 Peer not started", "WARNING"},
+  {1, "1648449331 Peer not started", "WARNING"},
+  {3, "1648449331 Creating log folder", "DEBUG"},
+}
+
+filterWarning := func(l log) (bool, error) {
+  return l.Level == "WARNING", nil
+}
+
+removeTimestamp := func(l log) (log, error) {
+  chunks := strings.Split(l.Text, " ")
+  l.Text = strings.Join(chunks[1:], " ")
+  return l, nil
+}
+
+countOccurrence := func(count map[string]int, l log) (map[string]int, error) {
+  if _, ok := count[l.Text]; ok {
+    count[l.Text] += 1
+  } else {
+    count[l.Text] = 1
+  }
+  return count, nil
+}
+
+var count = map[string]int{}
+
+logs, _ = slice.Filter(logs, filterWarning)
+logs, _ = slice.Map(logs, removeTimestamp)
+count, _ = slice.Reduce(logs, countOccurrence, count)
+
+fmt.Println(count)
+// map[
+// 	Peer not started: 2
+// 	Missing log folder: 3
+// ]
+```
