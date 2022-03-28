@@ -36,3 +36,29 @@ func Reduce[T any, U any](list []T, f func(U, T) (U, error), base U) (U, error) 
 	}
 	return base, nil
 }
+
+func Some[T any](list []T, f func(T) (bool, error)) (bool, error) {
+	for _, v := range list {
+		ok, err := f(v)
+		if err != nil {
+			return false, err
+		}
+		if ok {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+func Every[T any](list []T, f func(T) (bool, error)) (bool, error) {
+	for _, v := range list {
+		ok, err := f(v)
+		if err != nil {
+			return false, err
+		}
+		if !ok {
+			return false, nil
+		}
+	}
+	return true, nil
+}

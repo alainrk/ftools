@@ -2,21 +2,8 @@ package slice
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 )
-
-func isPositive(i int) (bool, error) {
-	return i >= 0, nil
-}
-
-func isNegative(i float64) (bool, error) {
-	return i < 0, nil
-}
-
-func isUppercase(s string) (bool, error) {
-	return s == strings.ToUpper(s), nil
-}
 
 func TestFilterInt(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
