@@ -7,25 +7,39 @@ Requires `go >= 1.18`
 ## Prerequisites
 `GO111MODULE=on` has to be setup in your env.
 
-## Example
+## How to
+
+### Install
+```sh
+go get github.com/alainrk/ftools
+```
+
 ```go
 import "github.com/alainrk/ftools/slice"
+```
 
-// Filter
+### Filter
+```go
 ints := []int{1, 2, 3, 4, 5}
 even, _ := slice.Filter(ints, func(x int) (bool, error) {
   return x%2 == 0, nil
 })
 fmt.Println(even) // [2 4]
 
-// Map
+```
+
+### Map
+```go
 chars := []string{"a", "b", "c", "d", "e"}
 upper, _ := slice.Map(chars, func(x string) (string, error) {
   return strings.ToUpper(x), nil
 })
 fmt.Println(upper) // [A B C D E]
 
-// Reduce
+```
+
+### Reduce
+```go
 products := []product{
   product{Name: "a", Price: 10},
   product{Name: "b", Price: 20},
@@ -36,7 +50,10 @@ sumPrice, _ := slice.Reduce(products, func(s float64, p product) (float64, error
 }, 0)
 fmt.Println(sumPrice) // 60
 
-// Some & Every
+```
+
+### Some & Every
+```go
 isNegative := func(i float64) (bool, error) {
   return i < 0, nil
 }
