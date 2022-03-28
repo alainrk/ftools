@@ -35,4 +35,15 @@ sumPrice, _ := slice.Reduce(products, func(s float64, p product) (float64, error
   return s + p.Price, nil
 }, 0)
 fmt.Println(sumPrice) // 60
+
+// Some & Every
+isNegative := func(i float64) (bool, error) {
+  return i < 0, nil
+}
+
+floats := []float64{-1.5, -4.3, 0, -5.7842, 2.012938, 3.0}
+hasNegatives, _ := slice.Some(floats, isNegative)
+allNegatives, _ := slice.Every(floats, isNegative)
+fmt.Println(hasNegatives) // true
+fmt.Println(allNegatives) // false
 ```
