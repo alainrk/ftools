@@ -74,7 +74,13 @@ fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
 
 ## Example
 ```go
-logs := []log{
+type Log struct {
+	ServerID int
+	Text     string
+	Level    string
+}
+
+logs := []Log{
   {1, "1648449331 Proc started", "INFO"},
   {2, "1648449331 Proc started", "INFO"},
   {2, "1648449331 Missing log folder", "WARNING"},
@@ -87,19 +93,19 @@ logs := []log{
   {3, "1648449331 Creating log folder", "DEBUG"},
 }
 
-filterLevel := func(level string) func(log) (bool, error) {
-  return func(l log) (bool, error) {
+filterLevel := func(level string) func(Log) (bool, error) {
+  return func(l Log) (bool, error) {
     return l.Level == level, nil
   }
 }
 
-removeTimestamp := func(l log) (log, error) {
+removeTimestamp := func(l Log) (Log, error) {
   chunks := strings.Split(l.Text, " ")
   l.Text = strings.Join(chunks[1:], " ")
   return l, nil
 }
 
-countOccurrence := func(count map[string]int, l log) (map[string]int, error) {
+countOccurrence := func(count map[string]int, l Log) (map[string]int, error) {
   if _, ok := count[l.Text]; ok {
     count[l.Text] += 1
   } else {
