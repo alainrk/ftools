@@ -80,8 +80,10 @@ logs := []log{
   {3, "1648449331 Creating log folder", "DEBUG"},
 }
 
-filterWarning := func(l log) (bool, error) {
-  return l.Level == "WARNING", nil
+filterLevel := func(level string) func(log) (bool, error) {
+  return func(l log) (bool, error) {
+    return l.Level == level, nil
+  }
 }
 
 removeTimestamp := func(l log) (log, error) {
@@ -101,13 +103,9 @@ countOccurrence := func(count map[string]int, l log) (map[string]int, error) {
 
 var count = map[string]int{}
 
-logs, _ = slice.Filter(logs, filterWarning)
+logs, _ = slice.Filter(logs, filterLevel("WARNING"))
 logs, _ = slice.Map(logs, removeTimestamp)
 count, _ = slice.Reduce(logs, countOccurrence, count)
 
-fmt.Println(count)
-// map[
-// 	Peer not started: 2
-// 	Missing log folder: 3
-// ]
+fmt.Println(count) // map["Peer not started": 2, "Missing log folder": 3]
 ```
