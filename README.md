@@ -67,7 +67,7 @@ fmt.Println(allNegatives) // false
 
 ### Chunk
 ```go
-ints = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+ints := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 res := slice.Chunk(ints, 4)
 fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
 ```
