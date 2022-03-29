@@ -97,4 +97,9 @@ func main() {
 	allNegatives, _ := slice.Every(floats, isNegative)
 	fmt.Println(hasNegatives) // true
 	fmt.Println(allNegatives) // false
+
+	// Chunk
+	ints = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	res := slice.Chunk(ints, 4)
+	fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
 }

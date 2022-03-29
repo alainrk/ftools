@@ -62,3 +62,29 @@ func Every[T any](list []T, f func(T) (bool, error)) (bool, error) {
 	}
 	return true, nil
 }
+
+func Chunk[T any](list []T, size int) [][]T {
+	var result [][]T
+	if size <= 0 {
+		return result
+	}
+
+	for i := 0; i < len(list); i += size {
+		end := i + size
+		if end > len(list) {
+			end = len(list)
+		}
+		result = append(result, list[i:end])
+	}
+	return result
+
+	// i := 0
+	// for i <= len(list)-size {
+	// 	result = append(result, list[i:i+size])
+	// 	i += size
+	// }
+	// if i < len(list)-1 {
+	// 	result = append(result, list[i:])
+	// }
+	// return result
+}

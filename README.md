@@ -65,6 +65,13 @@ fmt.Println(hasNegatives) // true
 fmt.Println(allNegatives) // false
 ```
 
+```go
+// Chunk
+ints = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+res := slice.Chunk(ints, 4)
+fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
+```
+
 ## Example
 ```go
 logs := []log{
