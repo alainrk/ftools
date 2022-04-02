@@ -6,13 +6,6 @@ import (
 	"testing"
 )
 
-func Abs(i int) (int, error) {
-	if i < 0 {
-		return -i, nil
-	}
-	return i, nil
-}
-
 func TestMapAbs(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
 	res, err := Map(l, Abs)

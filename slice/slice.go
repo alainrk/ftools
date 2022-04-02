@@ -77,14 +77,17 @@ func Chunk[T any](list []T, size int) [][]T {
 		result = append(result, list[i:end])
 	}
 	return result
+}
 
-	// i := 0
-	// for i <= len(list)-size {
-	// 	result = append(result, list[i:i+size])
-	// 	i += size
-	// }
-	// if i < len(list)-1 {
-	// 	result = append(result, list[i:])
-	// }
-	// return result
+func FindIndex[T any](list []T, f func(T) (bool, error)) (int, error) {
+	for i, v := range list {
+		ok, err := f(v)
+		if err != nil {
+			return -1, err
+		}
+		if ok {
+			return i, nil
+		}
+	}
+	return -1, nil
 }
