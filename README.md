@@ -75,11 +75,21 @@ fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
 ### FindIndex
 ```go
 // FindIndex
-fi := []int{-4, 3, 1, 5, 5, 6}
-idx, _ := slice.FindIndex(fi, func(i int) (bool, error) {
+ints := []int{-4, 3, 1, 5, 5, 6}
+idx, _ := slice.FindIndex(ints, func(i int) (bool, error) {
   return i == 5, nil
 })
 fmt.Println(idx) // 3
+```
+
+### FindLastIndex
+```go
+// FindIndex
+ints := []int{-4, 3, 1, 5, 5, 6}
+idx, _ := slice.FindLastIndex(ints, func(i int) (bool, error) {
+  return i == 5, nil
+})
+fmt.Println(idx) // 4
 ```
 
 ## Example

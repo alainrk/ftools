@@ -91,3 +91,16 @@ func FindIndex[T any](list []T, f func(T) (bool, error)) (int, error) {
 	}
 	return -1, nil
 }
+
+func FindLastIndex[T any](list []T, f func(T) (bool, error)) (int, error) {
+	for i := len(list) - 1; i >= 0; i-- {
+		ok, err := f(list[i])
+		if err != nil {
+			return -1, err
+		}
+		if ok {
+			return i, nil
+		}
+	}
+	return -1, nil
+}
