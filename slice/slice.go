@@ -114,3 +114,17 @@ func FindLastIndex[T any](list []T, f func(T) (bool, error)) (int, error) {
 	}
 	return -1, nil
 }
+
+func Intersection[T any](l1, l2 []T) []T {
+	s := map[any]bool{}
+	for _, v := range l1 {
+		s[v] = true
+	}
+	var intersection []T
+	for _, v := range l2 {
+		if _, ok := s[v]; ok {
+			intersection = append(intersection, v)
+		}
+	}
+	return intersection
+}
