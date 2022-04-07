@@ -46,7 +46,7 @@ func TestIntersectionStruct(t *testing.T) {
 	l1 := []Person{
 		{"John", 30},
 		{"Jane", 25},
-		{"Jack", 41},
+		{"Jack", 40},
 	}
 	l2 := []Person{
 		{"John", 30},
