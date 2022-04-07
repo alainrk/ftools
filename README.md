@@ -74,7 +74,6 @@ fmt.Println(res) // [[1 2 3 4] [5 6 7 8] [9 10]]
 
 ### FindIndex
 ```go
-// FindIndex
 ints := []int{-4, 3, 1, 5, 5, 6}
 idx, _ := slice.FindIndex(ints, func(i int) (bool, error) {
   return i == 5, nil
@@ -84,12 +83,19 @@ fmt.Println(idx) // 3
 
 ### FindLastIndex
 ```go
-// FindIndex
 ints := []int{-4, 3, 1, 5, 5, 6}
 idx, _ := slice.FindLastIndex(ints, func(i int) (bool, error) {
   return i == 5, nil
 })
 fmt.Println(idx) // 4
+```
+
+### Intersection
+```go
+l1 := []int{4, 5, 6, 7, 8}
+l2 := []int{1, 2, 3, 4}
+i := Intersection(l1, l2)
+fmt.Println(i) // [4]
 ```
 
 ## Example
