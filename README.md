@@ -94,7 +94,8 @@ fmt.Println(idx) // 4
 ```go
 l1 := []int{4, 5, 6, 7, 8}
 l2 := []int{1, 2, 3, 4}
-i := Intersection(l1, l2)
+l3 := []int{5, 4, 3}
+i := Intersection(l1, l2, l3)
 fmt.Println(i) // [4]
 ```
 

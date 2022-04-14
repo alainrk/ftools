@@ -115,7 +115,8 @@ func FindLastIndex[T any](list []T, f func(T) (bool, error)) (int, error) {
 	return -1, nil
 }
 
-func Intersection[T any](l1, l2 []T) []T {
+// Intersection returns a slice with the common elements of the given slices.
+func intersect[T any](l1, l2 []T) []T {
 	s := map[any]bool{}
 	for _, v := range l1 {
 		s[v] = true
@@ -126,5 +127,19 @@ func Intersection[T any](l1, l2 []T) []T {
 			intersection = append(intersection, v)
 		}
 	}
+	return intersection
+}
+
+// Intersection returns a slice with the common elements of the given slices.
+func Intersection[T any](l ...[]T) []T {
+	if len(l) == 0 {
+		return []T{}
+	}
+
+	intersection := l[0]
+	for i := 1; i < len(l); i++ {
+		intersection = intersect(intersection, l[i])
+	}
+
 	return intersection
 }

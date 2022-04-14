@@ -1,7 +1,6 @@
 package slice
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -37,6 +36,35 @@ func TestIntersectionInt(t *testing.T) {
 	}
 }
 
+func TestIntersectionStr(t *testing.T) {
+	res := Intersection(
+		[]string{"a", "b", "c"},
+		[]string{"b", "b", "c"},
+		[]string{"b", "b", "b"},
+		[]string{"a", "b", "c"},
+		[]string{"d", "d", "b"},
+	)
+	exp := []string{"b"}
+
+	if !reflect.DeepEqual(res, exp) {
+		t.Errorf("Expected %v, got %v", exp, res)
+	}
+}
+
+func TestIntersectionStrEmpty(t *testing.T) {
+	res := Intersection(
+		[]string{"a", "b", "c"},
+		[]string{"b", "b", "c"},
+		[]string{"b", "b", "b"},
+		[]string{"a", "b", "c"},
+		[]string{"d", "d", "d"},
+	)
+
+	if len(res) != 0 {
+		t.Errorf("Expected empty slice")
+	}
+}
+
 func TestIntersectionStruct(t *testing.T) {
 	type Person struct {
 		Name string
@@ -53,14 +81,16 @@ func TestIntersectionStruct(t *testing.T) {
 		{"Chris", 25},
 		{"Jack", 40},
 	}
-
-	res := Intersection(l1, l2)
-	exp := []Person{
+	l3 := []Person{
+		{"Antony", 12},
+		{"Jack", 45},
 		{"John", 30},
-		{"Jack", 40},
 	}
 
-	fmt.Printf("Expected %v, got %v", exp, res)
+	res := Intersection(l1, l2, l3)
+	exp := []Person{
+		{"John", 30},
+	}
 
 	if !reflect.DeepEqual(res, exp) {
 		t.Errorf("Expected %v, got %v", exp, res)
