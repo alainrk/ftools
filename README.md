@@ -2,6 +2,8 @@
 
 Functional tools for Go based on [Generics](https://go.dev/blog/intro-generics).
 
+Yes, inspired by [lodash](https://lodash.com/docs).
+
 Requires `go >= 1.18`
 
 ## Prerequisites
