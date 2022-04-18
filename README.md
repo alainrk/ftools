@@ -20,6 +20,11 @@ go get github.com/alainrk/ftools
 import "github.com/alainrk/ftools/slice"
 ```
 
+### Test
+```sh
+make test
+```
+
 ### Filter
 ```go
 ints := []int{1, 2, 3, 4, 5}
