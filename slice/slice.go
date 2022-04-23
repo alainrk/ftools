@@ -143,3 +143,20 @@ func Intersection[T any](l ...[]T) []T {
 
 	return intersection
 }
+
+// Pull returns a slice without the specified elements.
+// The given type has to be a comparable (https://pkg.go.dev/golang.org/x/tools/internal/typesinternal?utm_source=gopls#IncomparableMapKey).
+func Pull[T any](list []T, removeList ...T) []T {
+	m := make(map[any]bool, len(removeList))
+	var res []T
+
+	for _, r := range removeList {
+		m[r] = true
+	}
+	for _, l := range list {
+		if _, ok := m[l]; !ok {
+			res = append(res, l)
+		}
+	}
+	return res
+}

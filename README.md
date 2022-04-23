@@ -104,6 +104,11 @@ l2 := []int{1, 2, 3, 4}
 l3 := []int{5, 4, 3}
 i := Intersection(l1, l2, l3)
 fmt.Println(i) // [4]
+
+### Pull
+l := []int{1, 2, 3, 4}
+res := Pull(l, 1, 3, 5)
+fmt.Println(res) // [2, 4]
 ```
 
 ## Example
