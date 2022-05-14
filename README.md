@@ -118,7 +118,7 @@ No sort is performed and unique values are returned.
 ```go
 l := []int{3, 4}
 p := []int{1, 3, 4}
-res := Union(l, 1, 3, 5)
+res := Union(l, p)
 fmt.Println(res) // [3, 4, 1]
 ```
 
