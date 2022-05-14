@@ -113,6 +113,15 @@ res := Pull(l, 1, 3, 5)
 fmt.Println(res) // [2, 4]
 ```
 
+### Union
+No sort is performed and unique values are returned.
+```go
+l := []int{3, 4}
+p := []int{1, 3, 4}
+res := Union(l, 1, 3, 5)
+fmt.Println(res) // [3, 4, 1]
+```
+
 ## Example
 ```go
 type Log struct {

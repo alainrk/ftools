@@ -160,3 +160,19 @@ func Pull[T any](list []T, removeList ...T) []T {
 	}
 	return res
 }
+
+// Union returns a slice where all the elements are unique and
+// each element in each slice is present at most once in the resulting one.
+func Union[T any](list ...[]T) []T {
+	m := make(map[any]bool)
+	res := []T{}
+	for _, l := range list {
+		for _, v := range l {
+			if _, ok := m[v]; !ok {
+				res = append(res, v)
+				m[v] = true
+			}
+		}
+	}
+	return res
+}
