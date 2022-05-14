@@ -1,8 +1,10 @@
-package slice
+package slice_test
 
 import (
 	"strconv"
 	"testing"
+
+	"github.com/alainrk/ftools/slice"
 )
 
 func SumInt(i, j int) (int, error) {
@@ -15,7 +17,7 @@ func Join(i string, j int) (string, error) {
 
 func TestReduceSumInt(t *testing.T) {
 	l := []int{2, 2, 2, 2}
-	res, err := Reduce(l, SumInt, 0)
+	res, err := slice.Reduce(l, SumInt, 0)
 	exp := 8
 	if err != nil {
 		t.Error(err)
@@ -27,7 +29,7 @@ func TestReduceSumInt(t *testing.T) {
 
 func TestJoin(t *testing.T) {
 	l := []int{1, 2, 3, 4}
-	res, err := Reduce(l, Join, "")
+	res, err := slice.Reduce(l, Join, "")
 	exp := "1234"
 	if err != nil {
 		t.Error(err)

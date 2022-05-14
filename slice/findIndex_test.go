@@ -1,12 +1,14 @@
-package slice
+package slice_test
 
 import (
 	"testing"
+
+	"github.com/alainrk/ftools/slice"
 )
 
 func TestFindIndexInt(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
-	res, err := FindIndex(l, func(i int) (bool, error) { return i == 4, nil })
+	res, err := slice.FindIndex(l, func(i int) (bool, error) { return i == 4, nil })
 	if err != nil {
 		t.Error(err)
 	}
@@ -17,7 +19,7 @@ func TestFindIndexInt(t *testing.T) {
 
 func TestFindIndexFloatNeg(t *testing.T) {
 	l := []float64{1, 4, 0, -5, 2, 3}
-	res, err := FindIndex(l, isNegative)
+	res, err := slice.FindIndex(l, isNegative)
 	if err != nil {
 		t.Error(err)
 	}
@@ -28,7 +30,7 @@ func TestFindIndexFloatNeg(t *testing.T) {
 
 func TestFindIndexString(t *testing.T) {
 	l := []string{"hello", "world", "this", "is", "it"}
-	res, err := FindIndex(l, isEmptyString)
+	res, err := slice.FindIndex(l, isEmptyString)
 	if err != nil {
 		t.Error(err)
 	}
@@ -39,7 +41,7 @@ func TestFindIndexString(t *testing.T) {
 
 func TestFindLastIndexInt(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 4}
-	res, err := FindLastIndex(l, func(i int) (bool, error) { return i == 4, nil })
+	res, err := slice.FindLastIndex(l, func(i int) (bool, error) { return i == 4, nil })
 	if err != nil {
 		t.Error(err)
 	}
@@ -50,7 +52,7 @@ func TestFindLastIndexInt(t *testing.T) {
 
 func TestFindLastIndexFloatNeg(t *testing.T) {
 	l := []float64{-1, -4, -0, -5, 2, 3}
-	res, err := FindLastIndex(l, isNegative)
+	res, err := slice.FindLastIndex(l, isNegative)
 	if err != nil {
 		t.Error(err)
 	}
@@ -61,7 +63,7 @@ func TestFindLastIndexFloatNeg(t *testing.T) {
 
 func TestFindLastIndexString(t *testing.T) {
 	l := []string{"hello", "", "this", "", "it"}
-	res, err := FindLastIndex(l, isEmptyString)
+	res, err := slice.FindLastIndex(l, isEmptyString)
 	if err != nil {
 		t.Error(err)
 	}

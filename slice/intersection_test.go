@@ -1,15 +1,17 @@
-package slice
+package slice_test
 
 import (
 	"reflect"
 	"testing"
+
+	"github.com/alainrk/ftools/slice"
 )
 
 func TestIntersectionInt(t *testing.T) {
 	l1 := []int{1, 2, 3, 4}
 	l2 := []int{1, 2, 3, 4}
 
-	res := Intersection(l1, l2)
+	res := slice.Intersection(l1, l2)
 	exp := []int{1, 2, 3, 4}
 
 	if !reflect.DeepEqual(res, exp) {
@@ -19,7 +21,7 @@ func TestIntersectionInt(t *testing.T) {
 	l1 = []int{4, 5, 6, 7, 8}
 	l2 = []int{1, 2, 3, 4}
 
-	res = Intersection(l1, l2)
+	res = slice.Intersection(l1, l2)
 	exp = []int{4}
 
 	if !reflect.DeepEqual(res, exp) {
@@ -29,7 +31,7 @@ func TestIntersectionInt(t *testing.T) {
 	l1 = []int{5, 6, 7, 8}
 	l2 = []int{1, 2, 3, 4}
 
-	res = Intersection(l1, l2)
+	res = slice.Intersection(l1, l2)
 
 	if len(res) != 0 {
 		t.Errorf("Expected to be empty, got %v", res)
@@ -37,7 +39,7 @@ func TestIntersectionInt(t *testing.T) {
 }
 
 func TestIntersectionStr(t *testing.T) {
-	res := Intersection(
+	res := slice.Intersection(
 		[]string{"a", "b", "c"},
 		[]string{"b", "b", "c"},
 		[]string{"b", "b", "b"},
@@ -52,7 +54,7 @@ func TestIntersectionStr(t *testing.T) {
 }
 
 func TestIntersectionStrEmpty(t *testing.T) {
-	res := Intersection(
+	res := slice.Intersection(
 		[]string{"a", "b", "c"},
 		[]string{"b", "b", "c"},
 		[]string{"b", "b", "b"},
@@ -87,7 +89,7 @@ func TestIntersectionStruct(t *testing.T) {
 		{"John", 30},
 	}
 
-	res := Intersection(l1, l2, l3)
+	res := slice.Intersection(l1, l2, l3)
 	exp := []Person{
 		{"John", 30},
 	}

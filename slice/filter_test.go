@@ -1,13 +1,15 @@
-package slice
+package slice_test
 
 import (
 	"reflect"
 	"testing"
+
+	"github.com/alainrk/ftools/slice"
 )
 
 func TestFilterInt(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
-	res, err := Filter(l, isPositive)
+	res, err := slice.Filter(l, isPositive)
 	exp := []int{4, 0, 2, 3}
 	if err != nil {
 		t.Error(err)
@@ -19,7 +21,7 @@ func TestFilterInt(t *testing.T) {
 
 func TestFilterFloat(t *testing.T) {
 	l := []float64{-1.5, 4.3, 0, -5.7842, 2.012938, 3.0}
-	res, err := Filter(l, isNegative)
+	res, err := slice.Filter(l, isNegative)
 	exp := []float64{-1.5, -5.7842}
 	if err != nil {
 		t.Error(err)
@@ -31,7 +33,7 @@ func TestFilterFloat(t *testing.T) {
 
 func TestFilterString(t *testing.T) {
 	l := []string{"hello world", "HI", "This is it", "WHERE IS IT"}
-	res, err := Filter(l, isUppercase)
+	res, err := slice.Filter(l, isUppercase)
 	exp := []string{"HI", "WHERE IS IT"}
 	if err != nil {
 		t.Error(err)
@@ -43,7 +45,7 @@ func TestFilterString(t *testing.T) {
 
 func TestFilterEmpty(t *testing.T) {
 	l := []string{"hello world", "asd", "This is it", "WHeRE IS IT"}
-	res, err := Filter(l, isUppercase)
+	res, err := slice.Filter(l, isUppercase)
 	if err != nil {
 		t.Error(err)
 	}

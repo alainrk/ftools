@@ -1,14 +1,16 @@
-package slice
+package slice_test
 
 import (
 	"testing"
+
+	"github.com/alainrk/ftools/slice"
 )
 
 func TestUnionInt(t *testing.T) {
 	l1 := []int{1, 2, 3, 4}
 	l2 := []int{1, 2, 3, 4}
 
-	res := Union(l1, l2)
+	res := slice.Union(l1, l2)
 	exp := []int{1, 2, 3, 4}
 
 	if !haveSameElements(res, exp) {
@@ -18,7 +20,7 @@ func TestUnionInt(t *testing.T) {
 	l1 = []int{4, 5, 6, 7, 8, 8, 8, 8, 8, 8}
 	l2 = []int{1, 2, 3, 4}
 
-	res = Union(l1, l2)
+	res = slice.Union(l1, l2)
 	exp = []int{1, 2, 3, 4, 5, 6, 7, 8}
 
 	if !haveSameElements(res, exp) {
@@ -27,7 +29,7 @@ func TestUnionInt(t *testing.T) {
 }
 
 func TestUnionStr(t *testing.T) {
-	res := Union(
+	res := slice.Union(
 		[]string{"a", "b", "c"},
 		[]string{"b", "b", "c"},
 		[]string{"b", "b", "b"},
@@ -42,7 +44,7 @@ func TestUnionStr(t *testing.T) {
 }
 
 func TestUnionStrEmpty(t *testing.T) {
-	res := Union(
+	res := slice.Union(
 		[]string{},
 		[]string{},
 		[]string{},
@@ -77,7 +79,7 @@ func TestUnionStruct(t *testing.T) {
 		{"John", 30},
 	}
 
-	res := Union(l1, l2, l3)
+	res := slice.Union(l1, l2, l3)
 	exp := []Person{
 		{"John", 30},
 		{"Jane", 25},
