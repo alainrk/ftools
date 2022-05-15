@@ -1,7 +1,6 @@
 package slice_test
 
 import (
-	"reflect"
 	"strings"
 )
 
@@ -26,26 +25,4 @@ func Abs(i int) (int, error) {
 		return -i, nil
 	}
 	return i, nil
-}
-
-func haveSameElements[T any](x, y []T) bool {
-	if len(x) != len(y) {
-		return false
-	}
-	m := make(map[any]int)
-	n := make(map[any]int)
-	for i := 0; i < len(x); i++ {
-		c, ok := m[x[i]]
-		if !ok {
-			m[c] = 0
-		}
-		m[c]++
-
-		c, ok = n[x[i]]
-		if !ok {
-			n[c] = 0
-		}
-		n[c]++
-	}
-	return reflect.DeepEqual(m, n)
 }

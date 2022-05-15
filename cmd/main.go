@@ -109,4 +109,14 @@ func main() {
 		return i == 5, nil
 	})
 	fmt.Println(idx) // 3
+
+	// SameElements
+	l := []int{3, 4, 2, 2}
+	p := []int{2, 3, 4, 2}
+	q := []int{3, 2, 2, 4}
+
+	r := []int{2, 3, 4, 1}
+
+	fmt.Println(slice.SameElements(l, p, q))    // true
+	fmt.Println(slice.SameElements(l, p, q, r)) // false
 }

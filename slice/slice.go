@@ -1,5 +1,9 @@
 package slice
 
+import (
+	"reflect"
+)
+
 // Filter returns a new slice containing all elements that satisfy the predicate.
 func Filter[T any](list []T, f func(T) (bool, error)) ([]T, error) {
 	var result []T
@@ -175,4 +179,38 @@ func Union[T any](list ...[]T) []T {
 		}
 	}
 	return res
+}
+
+// SameElements checks if the given slices contain the same elements
+// without looking at the order, but considering the same amount in all of them.
+func SameElements[T any](l ...[]T) bool {
+	maps := []map[any]int{}
+
+	if len(l) < 1 {
+		return true
+	}
+	lenght := len(l[0])
+
+	for _, x := range l {
+		m := map[any]int{}
+		if len(x) != lenght {
+			return false
+		}
+		for i := 0; i < len(x); i++ {
+			_, ok := m[x[i]]
+			if !ok {
+				m[x[i]] = 0
+			}
+			m[x[i]]++
+		}
+		maps = append(maps, m)
+	}
+
+	first := maps[0]
+	for i := 1; i < len(maps); i++ {
+		if !reflect.DeepEqual(first, maps[i]) {
+			return false
+		}
+	}
+	return true
 }

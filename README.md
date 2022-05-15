@@ -122,6 +122,18 @@ res := Union(l, p)
 fmt.Println(res) // [3, 4, 1]
 ```
 
+### SameElements
+```go
+l := []int{3, 4, 2, 2}
+p := []int{2, 3, 4, 2}
+q := []int{3, 2, 2, 4}
+
+r := []int{2, 3, 4, 1}
+
+SameElements(l, p, q) // true
+SameElements(l, p, q, r) // false
+```
+
 ## Example
 ```go
 type Log struct {

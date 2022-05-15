@@ -13,7 +13,7 @@ func TestUnionInt(t *testing.T) {
 	res := slice.Union(l1, l2)
 	exp := []int{1, 2, 3, 4}
 
-	if !haveSameElements(res, exp) {
+	if !slice.SameElements(res, exp) {
 		t.Errorf("Expected %v, got %v", exp, res)
 	}
 
@@ -23,7 +23,7 @@ func TestUnionInt(t *testing.T) {
 	res = slice.Union(l1, l2)
 	exp = []int{1, 2, 3, 4, 5, 6, 7, 8}
 
-	if !haveSameElements(res, exp) {
+	if !slice.SameElements(res, exp) {
 		t.Errorf("Expected %v, got %v", exp, res)
 	}
 }
@@ -38,7 +38,7 @@ func TestUnionStr(t *testing.T) {
 	)
 	exp := []string{"a", "b", "c", "d"}
 
-	if !haveSameElements(res, exp) {
+	if !slice.SameElements(res, exp) {
 		t.Errorf("Expected %v, got %v", exp, res)
 	}
 }
@@ -89,7 +89,7 @@ func TestUnionStruct(t *testing.T) {
 		{"Jack", 45},
 	}
 
-	if !haveSameElements(res, exp) {
+	if !slice.SameElements(res, exp) {
 		t.Errorf("Expected %v, got %v", exp, res)
 	}
 }
