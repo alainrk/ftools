@@ -1,5 +1,11 @@
 # ftools
 
+[![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](https://go.dev/)
+[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/gomods/athens.svg)](https://github.com/gomods/athens)
+![example workflow](https://github.com/devgardens/ftools/actions/workflows/go.yml/badge.svg)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/devgardens/ftools/issues)
+
+
 Functional tools for Go based on [Generics](https://go.dev/blog/intro-generics).
 
 Yes, inspired by [lodash](https://lodash.com/docs).
