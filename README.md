@@ -140,6 +140,13 @@ SameElements(l, p, q) // true
 SameElements(l, p, q, r) // false
 ```
 
+### Without
+```go
+l := []int{1, 2, 3, 4}
+
+Without(l, 1, 4) // [2, 3]
+```
+
 ## Example
 ```go
 type Log struct {

@@ -214,3 +214,28 @@ func SameElements[T any](l ...[]T) bool {
 	}
 	return true
 }
+
+// Without returns a slice that excludes all the given elements.
+func Without[T any](s []T, l ...T) []T {
+	m := make(map[any]bool)
+
+	count := len(s)
+	for _, x := range l {
+		if _, ok := m[x]; !ok {
+			m[x] = true
+			count--
+		}
+	}
+
+	res := make([]T, count)
+
+	i := 0
+	for _, x := range s {
+		if _, ok := m[x]; !ok {
+			res[i] = x
+			i++
+		}
+	}
+
+	return res
+}
