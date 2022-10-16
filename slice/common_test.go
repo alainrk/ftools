@@ -1,4 +1,4 @@
-package slice_test
+package slice
 
 import (
 	"strings"

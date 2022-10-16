@@ -1,16 +1,14 @@
-package slice_test
+package slice
 
 import (
 	"reflect"
 	"strconv"
 	"testing"
-
-	"github.com/alainrk/ftools/slice"
 )
 
 func TestMapAbs(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
-	res, err := slice.Map(l, Abs)
+	res, err := Map(l, Abs)
 	exp := []int{1, 4, 0, 5, 2, 3}
 	if err != nil {
 		t.Error(err)
@@ -22,7 +20,7 @@ func TestMapAbs(t *testing.T) {
 
 func TestMapEmpty(t *testing.T) {
 	l := []int{}
-	res, err := slice.Map(l, Abs)
+	res, err := Map(l, Abs)
 	if err != nil {
 		t.Error(err)
 	}
@@ -33,7 +31,7 @@ func TestMapEmpty(t *testing.T) {
 
 func TestMapToString(t *testing.T) {
 	l := []int{-1, 4, 0, -5, 2, 3}
-	res, err := slice.Map(l, func(i int) (string, error) { return strconv.Itoa(i), nil })
+	res, err := Map(l, func(i int) (string, error) { return strconv.Itoa(i), nil })
 	exp := []string{"-1", "4", "0", "-5", "2", "3"}
 	if err != nil {
 		t.Error(err)
